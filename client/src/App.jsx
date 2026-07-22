@@ -15,7 +15,7 @@ const getApiBase = () => {
     return `${window.location.origin}/api`;
   }
   // 3. Fallback for Local Development
-  return 'http://localhost:5000/api';
+  return 'https://sarmimanimart-nefe.onrender.com';
 };
 
 const API_BASE = getApiBase();
