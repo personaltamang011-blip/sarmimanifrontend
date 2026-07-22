@@ -10,10 +10,12 @@ const getApiBase = () => {
   if (import.meta.env.VITE_API_BASE_URL) {
     return import.meta.env.VITE_API_BASE_URL;
   }
-  // 2. Automatic Relative Host Resolution (for Render / Railway / Single-host deployment)
+
+  // 2. Production fallback for the Render backend
   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-    return `${window.location.origin}/api`;
+    return 'https://sarmimanimart-nefe.onrender.com/api';
   }
+
   // 3. Fallback for Local Development
   return '/api';
 };
