@@ -253,7 +253,7 @@ export default function AdminPanel({
   return (
     <div className="admin-container">
       {/* Top Header & Sub-nav Options */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', gap: '1rem' }}>
+      <div className="admin-header-row" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', gap: '1rem' }}>
         <div>
           <h1 style={{ fontSize: '2rem', fontWeight: '800' }}>Admin Control Center</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
@@ -261,7 +261,7 @@ export default function AdminPanel({
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+        <div className="admin-header-actions" style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
           <button 
             className="nav-btn"
             onClick={refreshData}
@@ -281,7 +281,7 @@ export default function AdminPanel({
       </div>
 
       {/* Main Admin Sub-Tabs Navigation Options */}
-      <div style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
+      <div className="admin-tabs" style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
         <button 
           className={`nav-btn ${adminSubTab === 'dashboard' ? 'active' : ''}`}
           onClick={() => setAdminSubTab('dashboard')}
@@ -382,7 +382,7 @@ export default function AdminPanel({
 
       {/* 2. PRODUCT OPTION (Add/Edit Product & Stock System) */}
       {adminSubTab === 'products' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
+        <div className="admin-product-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem' }}>
           {/* Add / Edit Product Form */}
           <div className="glass-panel" style={{ padding: '1.5rem', height: 'fit-content' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
