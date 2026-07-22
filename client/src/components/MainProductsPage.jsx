@@ -9,6 +9,7 @@ export default function MainProductsPage({
   addToCart 
 }) {
   const [quantities, setQuantities] = useState({});
+  const safeProducts = Array.isArray(products) ? products : [];
 
   const handleQtyChange = (id, delta, maxStock) => {
     setQuantities(prev => {
@@ -18,7 +19,7 @@ export default function MainProductsPage({
     });
   };
 
-  const filteredProducts = products.filter(product =>
+  const filteredProducts = safeProducts.filter(product =>
     product.name.toLowerCase().includes((searchQuery || '').toLowerCase())
   );
 
@@ -38,7 +39,7 @@ export default function MainProductsPage({
       </div>
 
       {/* Out of Stock Alert Summary Banner (if any products out of stock) */}
-      {products.some(p => p.stock === 0) && (
+      {safeProducts.some(p => p.stock === 0) && (
         <div style={{
           maxWidth: '1280px',
           margin: '1.5rem auto 0',

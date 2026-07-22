@@ -15,7 +15,7 @@ const getApiBase = () => {
     return `${window.location.origin}/api`;
   }
   // 3. Fallback for Local Development
-  return 'http://localhost:5173';
+  return '/api';
 };
 
 const API_BASE = getApiBase();
@@ -54,9 +54,11 @@ export default function App() {
     try {
       setLoading(true);
       const res = await axios.get(`${API_BASE}/products`);
-      setProducts(res.data);
+      const normalizedProducts = Array.isArray(res.data) ? res.data : [];
+      setProducts(normalizedProducts);
     } catch (err) {
       console.error('Error fetching products:', err);
+      setProducts([]);
       showToast('Could not connect to backend server. Make sure server is running.', 'error');
     } finally {
       setLoading(false);
